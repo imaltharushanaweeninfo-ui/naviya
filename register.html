@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register – NAVI ACCOUNT STORE</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="logo">NAVI <span>ACCOUNT</span> STORE</div>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="collection.html">Collections</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+      </div>
+
+      <div class="nav-actions">
+        <button type="button" id="themeToggle" class="theme-toggle">
+          ☀ Light
+        </button>
+        <a href="https://wa.me/94775698175" target="_blank" class="btn-primary">WhatsApp</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero-single">
+      <div class="hero-badge">
+        <span></span> Create account
+      </div>
+      <h1 class="hero-title">
+        Register for your <span>NAVI ACCOUNT STORE</span> account.
+      </h1>
+      <p class="hero-text">
+        This is a demo registration form. Later you can connect it to a real authentication service to
+        create admin or customer accounts.
+      </p>
+    </section>
+
+    <section class="section">
+      <div class="card" style="max-width:480px;margin:0 auto;">
+        <h2>Register</h2>
+        <p class="section-subtitle" style="margin-bottom:0.9rem;">
+          Fill in your details to sign up.
+        </p>
+
+        <form id="registerForm">
+          <div>
+            <label for="regName">Your name</label>
+            <input id="regName" type="text" name="name" required />
+          </div>
+
+          <div>
+            <label for="regEmail">Email</label>
+            <input id="regEmail" type="email" name="email" required />
+          </div>
+
+          <div>
+            <label for="regPassword">Password</label>
+            <input id="regPassword" type="password" name="password" required />
+          </div>
+
+          <div>
+            <label for="regPassword2">Confirm password</label>
+            <input id="regPassword2" type="password" name="password_confirm" required />
+          </div>
+
+          <div style="font-size:0.78rem;margin-top:0.4rem;">
+            <label style="display:flex;align-items:flex-start;gap:0.3rem;">
+              <input type="checkbox" required style="width:auto;height:auto;margin-top:0.15rem;" />
+              <span>
+                I understand this is only a demo form and no real Free Fire game login is created or modified.
+              </span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn-primary" style="margin-top:0.9rem;width:100%;">
+            Create account
+          </button>
+
+          <p id="registerStatus" style="font-size:0.78rem;color:var(--text-muted);margin-top:0.5rem;">
+            Demo only – data is not stored yet.
+          </p>
+
+          <p style="font-size:0.78rem;color:var(--text-muted);margin-top:0.4rem;">
+            Already registered?
+            <a href="login.html" style="color:var(--accent-2);">Login here</a>.
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> NAVI ACCOUNT STORE · Not affiliated with Garena or any game company.
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // theme toggle
+    (function () {
+      const root = document.documentElement;
+      const btn = document.getElementById("themeToggle");
+
+      function applyTheme(theme) {
+        const t = theme === "light" ? "light" : "dark";
+        root.setAttribute("data-theme", t);
+        btn.textContent = t === "light" ? "🌙 Dark" : "☀ Light";
+      }
+
+      const saved = localStorage.getItem("navi-theme");
+      applyTheme(saved || "dark");
+
+      btn.addEventListener("click", () => {
+        const next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+        applyTheme(next);
+        localStorage.setItem("navi-theme", next);
+      });
+    })();
+
+    // simple demo handler (no real registration)
+    document.getElementById("registerForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const pw1 = document.getElementById("regPassword").value;
+      const pw2 = document.getElementById("regPassword2").value;
+      const status = document.getElementById("registerStatus");
+
+      if (pw1 !== pw2) {
+        status.textContent = "Passwords do not match. Please try again.";
+        return;
+      }
+
+      status.textContent = "Registration form submitted (demo). Connect to real backend later.";
+    });
+  </script>
+</body>
+</html>

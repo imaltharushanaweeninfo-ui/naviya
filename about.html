@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NAVI ACCOUNT STORE - About</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="logo">NAVI <span>ACCOUNT</span> STORE</div>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="collection.html">Collections</a>
+        <a href="sold.html">Sold</a>
+
+        <a href="about.html" class="active">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="nav-actions">
+        <button type="button" id="themeToggle" class="theme-toggle">
+          ☀ Light
+        </button>
+        <a href="https://wa.me/94775698175" target="_blank" class="btn-primary">
+          WhatsApp
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero-single">
+      <div class="hero-badge">
+        <span></span> About NAVI ACCOUNT STORE
+      </div>
+      <h1 class="hero-title">
+        A simple store for <span>serious Free Fire players</span>.
+      </h1>
+      <p class="hero-text">
+        Use this page to tell buyers who you are, how long you’ve played, and why they can trust
+        NAVI ACCOUNT STORE.
+      </p>
+    </section>
+
+    <section class="section">
+      <div class="about-layout">
+        <!-- LEFT CARD -->
+        <div class="card">
+          <h2>Who runs NAVI ACCOUNT STORE?</h2>
+          <p style="font-size:0.88rem;margin-top:0.5rem;color:var(--text-main);">
+            Here you can write your story. For example:
+            <br /><br />
+            “NAVI ACCOUNT STORE is managed by a long-time Free Fire player who has spent years
+            grinding ranks, collecting skins and helping friends get better accounts.”
+          </p>
+          <p style="font-size:0.88rem;margin-top:0.6rem;color:var(--text-main);">
+            You can edit this text to match your real experience and style. Keep it honest and simple.
+          </p>
+
+          <div class="pills">
+            <span>Free Fire focused</span>
+            <span>Manual checking</span>
+            <span>Fast replies</span>
+          </div>
+        </div>
+
+        <!-- RIGHT CARD -->
+        <div class="card">
+          <h2>How NAVI ACCOUNT STORE works</h2>
+          <ul style="list-style:disc;padding-left:1.2rem;font-size:0.84rem;margin-top:0.5rem;color:var(--text-main);">
+            <li style="margin-bottom:0.3rem;">You browse accounts in the Collections page.</li>
+            <li style="margin-bottom:0.3rem;">You message us with the account code and questions.</li>
+            <li style="margin-bottom:0.3rem;">If you agree on price, you send payment.</li>
+            <li style="margin-bottom:0.3rem;">
+              We guide you step-by-step to change login and secure the account.
+            </li>
+          </ul>
+          <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.7rem;">
+            Note: account trading may be risky and can go against game rules. Buyers should understand
+            this and take responsibility before purchasing.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> NAVI ACCOUNT STORE · Not affiliated with Garena or any game company.
+  </footer>
+
+  <script>
+    // footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // theme toggle (same behavior as on home/contact)
+    (function () {
+      const root = document.documentElement;
+      const btn = document.getElementById("themeToggle");
+
+      function applyTheme(theme) {
+        const t = theme === "light" ? "light" : "dark";
+        root.setAttribute("data-theme", t);
+        btn.textContent = t === "light" ? "🌙 Dark" : "☀ Light";
+      }
+
+      const saved = localStorage.getItem("navi-theme");
+      applyTheme(saved || "dark");
+
+      btn.addEventListener("click", () => {
+        const next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+        applyTheme(next);
+        localStorage.setItem("navi-theme", next);
+      });
+    })();
+  </script>
+</body>
+</html>

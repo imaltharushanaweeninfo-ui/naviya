@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>NAVI Admin Helper - Generate Account Cards</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+      padding: 1.5rem;
+    }
+
+    h1 {
+      font-size: 1.4rem;
+      margin-bottom: 0.3rem;
+    }
+
+    p {
+      font-size: 0.85rem;
+      color: #9ca3af;
+      margin-bottom: 1.2rem;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.6fr);
+      gap: 1.2rem;
+    }
+
+    @media (max-width: 900px) {
+      .layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card {
+      background: #020718;
+      border-radius: 1rem;
+      border: 1px solid #1f2937;
+      padding: 1rem;
+    }
+
+    .card h2 {
+      font-size: 1rem;
+      margin-bottom: 0.6rem;
+    }
+
+    form {
+      display: grid;
+      gap: 0.7rem;
+      font-size: 0.85rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border-radius: 0.6rem;
+      border: 1px solid #1f2937;
+      background: #020617;
+      color: #e5e7eb;
+      padding: 0.45rem 0.6rem;
+      font-size: 0.85rem;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .row {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .row > div {
+      flex: 1;
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-top: 0.3rem;
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, #22c55e, #6366f1);
+      color: #f9fafb;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-top: 0.3rem;
+    }
+
+    button:hover {
+      opacity: 0.95;
+    }
+
+    .output-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.4rem;
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+
+    .output-header strong {
+      color: #e5e7eb;
+    }
+
+    textarea.output {
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.78rem;
+      white-space: pre;
+    }
+
+    .small-note {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      margin-top: 0.4rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>NAVI ADMIN HELPER</h1>
+  <p>
+    Fill the form, click <strong>Generate HTML</strong>, then copy the
+    <code>&lt;article&gt;...&lt;/article&gt;</code> into
+    <strong>collection.html</strong> inside the correct <code>.accounts-grid</code>.
+  </p>
+
+  <div class="layout">
+    <!-- LEFT: FORM -->
+    <div class="card">
+      <h2>Account data</h2>
+      <form id="accountForm" onsubmit="event.preventDefault(); generateCard();">
+        <div class="row">
+          <div>
+            <label for="category">Category</label>
+            <select id="category" required>
+              <option value="Budget">Budget</option>
+              <option value="Mid-range">Mid-range</option>
+              <option value="Premium">Premium</option>
+            </select>
+          </div>
+          <div>
+            <label for="accountId">Account ID (code)</label>
+            <input id="accountId" type="text" placeholder="BUD-NAVI-09" required />
+          </div>
+        </div>
+
+        <div>
+          <label for="meta">Level / rank text</label>
+          <input id="meta" type="text" placeholder="Level 70 • Diamond II" />
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="price">Price</label>
+            <input id="price" type="text" placeholder="28,500/=" required />
+          </div>
+          <div>
+            <label for="image">Image filename</label>
+            <input id="image" type="text" placeholder="bud-09.jpg" required />
+          </div>
+        </div>
+
+        <div>
+          <label for="details">Details (one line = one bullet)</label>
+          <textarea id="details" placeholder="📓 Cobra&#10;📓 Naruto&#10;📓 5 Evo guns&#10;Any bind ✅"></textarea>
+        </div>
+
+        <div class="checkbox-row">
+          <input id="sold" type="checkbox" />
+          <label for="sold">Mark as SOLD (adds <code>sold</code> class)</label>
+        </div>
+
+        <button type="submit">Generate HTML</button>
+        <div class="small-note">
+          Chat button will use: <code>contact.html?acc=&lt;Account ID&gt;</code>
+        </div>
+      </form>
+    </div>
+
+    <!-- RIGHT: OUTPUT -->
+    <div class="card">
+      <div class="output-header">
+        <strong>Generated &lt;article&gt;</strong>
+        <button type="button" onclick="copyOutput()">Copy to clipboard</button>
+      </div>
+      <textarea id="output" class="output" spellcheck="false" placeholder="Generated HTML will appear here..." readonly></textarea>
+      <div class="small-note">
+        Paste this block into <strong>collection.html</strong> inside the correct
+        <code>&lt;div class=&quot;accounts-grid&quot;&gt; ...</code>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function escapeHtml(text) {
+      return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+    }
+
+    function generateCard() {
+      const category = document.getElementById("category").value;
+      const accountId = document.getElementById("accountId").value.trim();
+      const meta = document.getElementById("meta").value.trim();
+      const price = document.getElementById("price").value.trim();
+      const image = document.getElementById("image").value.trim();
+      const detailsRaw = document.getElementById("details").value;
+      const sold = document.getElementById("sold").checked;
+
+      if (!accountId || !price || !image) {
+        alert("Please fill Account ID, Price and Image filename.");
+        return;
+      }
+
+      // Build details list
+      let detailsList = "";
+      const lines = detailsRaw.split("\n").map(l => l.trim()).filter(l => l.length > 0);
+      if (lines.length > 0) {
+        detailsList =
+          '          <div class="account-body">\n' +
+          '            <ul class="acc-details">\n';
+        lines.forEach(line => {
+          detailsList += "              <li>" + escapeHtml(line) + "</li>\n";
+        });
+        detailsList += "            </ul>\n";
+        detailsList += "          </div>\n";
+      } else {
+        detailsList =
+          '          <div class="account-body">\n' +
+          "            <!-- Add details here -->\n" +
+          "          </div>\n";
+      }
+
+      // Build meta line
+      const metaHtml = meta
+        ? '              <div class="account-meta">' + escapeHtml(meta) + "</div>\n"
+        : "";
+
+      const articleClass =
+        'account-card account-card--screenshot' + (sold ? " sold" : "");
+
+      const html =
+`        <article class="${articleClass}">
+          <img src="${escapeHtml(image)}" alt="${escapeHtml(category)} Free Fire account" />
+          <div class="account-header">
+            <div>
+              <div class="account-id">${escapeHtml(accountId)}</div>
+${metaHtml}            </div>
+            <div class="badge">${escapeHtml(category)}</div>
+          </div>
+${detailsList}          <div class="account-footer">
+            <div class="account-price">${escapeHtml(price)}</div>
+            <button class="btn-outline"
+              onclick="location.href='contact.html?acc=${escapeHtml(accountId)}'">Chat to buy</button>
+          </div>
+        </article>`;
+
+      document.getElementById("output").value = html;
+    }
+
+    function copyOutput() {
+      const out = document.getElementById("output");
+      if (!out.value.trim()) {
+        alert("Nothing to copy yet. Generate HTML first.");
+        return;
+      }
+      out.select();
+      document.execCommand("copy");
+      alert("HTML copied. Paste it into collection.html");
+    }
+  </script>
+</body>
+</html>

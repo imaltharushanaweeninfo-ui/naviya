@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank you – NAVI ACCOUNT STORE</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="logo">NAVI <span>ACCOUNT</span> STORE</div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="collection.html">Collections</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero-single">
+      <div class="hero-badge">
+        <span></span> Request sent
+      </div>
+      <h1 class="hero-title">
+        Thank you for your <span>request</span>.
+      </h1>
+      <p class="hero-text">
+        We received your message. NAVI ACCOUNT STORE will contact you soon on WhatsApp or email.
+      </p>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <h2>Next steps</h2>
+        <ul style="margin-top:0.5rem;padding-left:1.2rem;font-size:0.9rem;color:var(--text-main);">
+          <li>We check the account code and availability.</li>
+          <li>We contact you using your WhatsApp / email.</li>
+          <li>We confirm price, payment and secure transfer.</li>
+        </ul>
+        <div style="margin-top:1.2rem;display:flex;gap:0.7rem;flex-wrap:wrap;">
+          <a href="collection.html" class="btn-outline">Back to collections</a>
+          <a href="index.html" class="btn-primary">Go to home</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> NAVI ACCOUNT STORE · Not affiliated with Garena or any game company.
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

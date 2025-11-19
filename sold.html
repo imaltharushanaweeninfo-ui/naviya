@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sold Accounts – NAVI ACCOUNT STORE</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .sold-grid {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.6rem;
+    }
+    .sold-ribbon {
+      position: absolute;
+      top: 15px;
+      right: -35px;
+      background: red;
+      color: white;
+      font-size: 0.85rem;
+      padding: 6px 45px;
+      transform: rotate(45deg);
+      font-weight: bold;
+      z-index: 5;
+    }
+    .sold-card {
+      opacity: 0.88;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="nav">
+      <div class="logo">NAVI <span>ACCOUNT</span> STORE</div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="collection.html">Collections</a>
+        <a href="sold.html" class="active">Sold</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <button type="button" id="themeToggle" class="theme-toggle">☀ Light</button>
+        <a href="contact.html" class="btn-primary">Order now</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero-single">
+      <div class="hero-badge"><span></span> SOLD ACCOUNTS</div>
+      <h1 class="hero-title">Sold NAVI <span>Free Fire accounts</span>.</h1>
+      <p class="hero-text">These accounts are no longer available — shown only for record & trust.</p>
+    </section>
+
+    <section class="section">
+      <h2>Sold accounts</h2>
+      <div id="soldContainer" class="sold-grid"></div>
+      <p id="soldError" style="color:#ff5a5a; margin-top:2rem; display:none;">
+        Error loading sold accounts.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> NAVI ACCOUNT STORE · Not affiliated with Garena or any game company.
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // fetch sold items from collection page
+    fetch("collection.html")
+      .then(res => res.text())
+      .then(html => {
+        const doc = new DOMParser().parseFromString(html, "text/html");
+        const soldCards = doc.querySelectorAll(".account-card.sold");
+        const container = document.getElementById("soldContainer");
+
+        if (soldCards.length === 0) {
+          container.innerHTML = "<p style='margin-top:1rem;'>No sold accounts yet.</p>";
+          return;
+        }
+
+        soldCards.forEach(card => {
+          let clone = card.cloneNode(true);
+          clone.classList.add("sold-card");
+
+          // add sold ribbon if missing
+          if (!clone.querySelector(".sold-ribbon")) {
+            const ribbon = document.createElement("div");
+            ribbon.className = "sold-ribbon";
+            ribbon.textContent = "SOLD";
+            clone.appendChild(ribbon);
+          }
+
+          // disable buy button
+          const btn = clone.querySelector("button");
+          if (btn) btn.remove();
+
+          container.appendChild(clone);
+        });
+      })
+      .catch(() => {
+        document.getElementById("soldError").style.display = "block";
+      });
+
+    // theme toggle
+    (function () {
+      const root = document.documentElement;
+      const btn = document.getElementById("themeToggle");
+      const saved = localStorage.getItem("navi-theme") || "dark";
+      root.setAttribute("data-theme", saved);
+      btn.textContent = saved === "light" ? "🌙 Dark" : "☀ Light";
+      btn.onclick = () => {
+        const next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+        root.setAttribute("data-theme", next);
+        btn.textContent = next === "light" ? "🌙 Dark" : "☀ Light";
+        localStorage.setItem("navi-theme", next);
+      };
+    })();
+  </script>
+</body>
+</html>

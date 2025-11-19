@@ -1,0 +1,820 @@
+/* ============ RESET & BASE ============ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* theme toggle button */
+.theme-toggle {
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  background: #020712;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+  color: var(--text-main);
+}
+
+:root {
+  /* default = dark theme */
+  --bg-main: #020617;
+  --bg-elevated: #020718;
+  --border-soft: #1f2937;
+  --text-main: #e5e7eb;
+  --text-muted: #9ca3af;
+  --accent: #22c55e;
+  --accent-soft: rgba(34, 197, 94, 0.1);
+  --accent-2: #6366f1;
+}
+
+/* Light theme variables */
+[data-theme="light"] {
+  --bg-main: #f3f4f6;
+  --bg-elevated: #ffffff;
+  --border-soft: #e5e7eb;
+  --text-main: #020617;   /* darker, more readable */
+  --text-muted: #4b5563;  /* stronger grey */
+  --accent: #16a34a;
+  --accent-soft: rgba(22, 163, 74, 0.12);
+  --accent-2: #4f46e5;
+}
+
+body {
+  background:
+    radial-gradient(circle at top, rgba(99, 102, 241, 0.15), transparent 55%),
+    radial-gradient(circle at bottom, rgba(34, 197, 94, 0.12), transparent 50%),
+    var(--bg-main);
+  color: var(--text-main);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  min-height: 100vh;
+}
+
+/* nicer background in LIGHT mode */
+html[data-theme="light"] body {
+  background:
+    radial-gradient(circle at top, rgba(79, 70, 229, 0.10), transparent 55%),
+    radial-gradient(circle at bottom, rgba(34, 197, 94, 0.08), transparent 50%),
+    var(--bg-main);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 3rem;
+}
+
+/* ============ HEADER / NAV ============ */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(2, 6, 23, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.9);
+}
+
+.nav {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.8rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 1.2rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.logo span {
+  color: var(--accent);
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.4rem;
+  font-size: 0.9rem;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  position: relative;
+  padding-bottom: 0.1rem;
+}
+
+.nav-links a:hover {
+  color: var(--text-main);
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.25rem;
+  width: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transition: width 150ms ease-out;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.btn-primary {
+  padding: 0.55rem 1.2rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #f9fafb;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.9);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.95);
+}
+
+/* ============ FOOTER ============ */
+footer {
+  border-top: 1px solid var(--border-soft);
+  padding: 1rem 1.5rem 1.5rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* ============ HERO ============ */
+.hero {
+  padding: 3rem 0 2rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.9fr) minmax(0, 1.4fr);
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.hero-single {
+  padding: 3rem 0 1.5rem;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  margin-bottom: 0.8rem;
+}
+
+.hero-badge span {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+.hero-title {
+  font-size: clamp(2.1rem, 4vw, 2.7rem);
+  font-weight: 800;
+  margin-bottom: 0.8rem;
+}
+
+.hero-title span {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-text {
+  font-size: 0.96rem;
+  color: #cbd5f5;
+  max-width: 35rem;
+  margin-bottom: 1.3rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 1.1rem;
+}
+
+/* ============ COMMON BOXES ============ */
+.card {
+  background:
+    radial-gradient(circle at top left, rgba(99, 102, 241, 0.16), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(34, 197, 94, 0.12), transparent 60%),
+    var(--bg-elevated);
+  border-radius: 1.2rem;
+  border: 1px solid var(--border-soft);
+  padding: 1.3rem;
+}
+
+.section {
+  margin: 2rem 0;
+}
+
+.section h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.4rem;
+}
+
+.section-subtitle {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+}
+
+/* ============ ACCOUNT CARDS ============ */
+.accounts-grid {
+  margin-top: 1.4rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 columns */
+  gap: 1.2rem;
+}
+
+/* On phones: 1 column */
+@media (max-width: 768px) {
+  .accounts-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.account-card {
+  background: #020717;
+  border: 1px solid var(--border-soft);
+  border-radius: 1.1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+/* normal images, if you add in future */
+.account-card img {
+  width: 100%;
+  border-radius: 0.9rem;
+  border: 1px solid var(--border-soft);
+  display: block;
+}
+
+.account-card--screenshot img {
+  width: 100%;
+  max-width: 100%;
+  height: 240px;
+  object-fit: contain;
+  background: #020712;
+  border-radius: 0.9rem;
+  border: 1px solid var(--border-soft);
+  display: block;
+  margin: 0 auto 0.6rem;
+}
+
+@media (max-width: 600px) {
+  .account-card--screenshot img {
+    height: 200px;
+  }
+}
+
+.account-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.account-id {
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.account-meta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.badge {
+  font-size: 0.7rem;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--accent-soft);
+  background: var(--accent-soft);
+  color: #bbf7d0;
+}
+
+.account-body {
+  font-size: 0.8rem;
+  color: #cbd5f5;
+}
+
+.acc-details {
+  font-size: 0.8rem;
+  color: #cbd5f5;
+  margin: 0.2rem 0 0.3rem 1rem;
+}
+
+.acc-details li {
+  margin-bottom: 0.1rem;
+}
+
+.account-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.2rem;
+}
+
+.account-tags span {
+  font-size: 0.7rem;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  color: var(--text-muted);
+}
+
+.account-footer {
+  margin-top: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.account-price {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.btn-outline {
+  font-size: 0.75rem;
+  padding: 0.32rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  background: transparent;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-outline:hover {
+  background: rgba(15, 23, 42, 0.9);
+  border-color: var(--accent);
+}
+
+/* ============ STEPS / GRID BLOCKS ============ */
+.steps-grid {
+  margin-top: 1.2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.step-card {
+  background: #020717;
+  border-radius: 1rem;
+  border: 1px solid var(--border-soft);
+  padding: 0.9rem;
+  font-size: 0.82rem;
+}
+
+.step-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+  margin-bottom: 0.15rem;
+}
+
+.step-title {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+/* ============ ABOUT PAGE ============ */
+.about-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.3fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+  font-size: 0.78rem;
+}
+
+.pills span {
+  padding: 0.22rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+}
+
+/* ============ CONTACT ============ */
+.contact-layout {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.3fr);
+  gap: 1.3rem;
+}
+
+.social-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 0.9rem;
+  font-size: 0.85rem;
+}
+
+.btn-chat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(34, 197, 94, 0.7);
+  background: var(--accent-soft);
+  font-size: 0.82rem;
+}
+
+/* Forms */
+form {
+  display: grid;
+  gap: 0.6rem;
+  font-size: 0.8rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+input,
+textarea {
+  width: 100%;
+  border-radius: 0.6rem;
+  border: 1px solid var(--border-soft);
+  background: #020712;
+  color: var(--text-main);
+  padding: 0.5rem 0.6rem;
+  font-size: 0.8rem;
+}
+
+textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 900px) {
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .about-layout,
+  .contact-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  main {
+    padding-inline: 1.1rem;
+  }
+}
+
+/* ============ LIGHT THEME OVERRIDES ============ */
+
+/* nav links in light mode more solid */
+html[data-theme="light"] .nav-links a {
+  color: var(--text-main);
+}
+
+/* theme toggle in light mode */
+html[data-theme="light"] .theme-toggle {
+  background: #ffffff;
+  color: #6b7280;
+}
+
+/* cards & step cards on light background */
+html[data-theme="light"] .card,
+html[data-theme="light"] .step-card,
+html[data-theme="light"] .account-card,
+html[data-theme="light"] .home-card {
+  background: #ffffff;
+  border-color: #e5e7eb;
+}
+
+/* screenshot image background in light mode */
+html[data-theme="light"] .account-card--screenshot img {
+  background: #e5e7eb;
+}
+
+/* WhatsApp button pill in light mode a bit softer */
+html[data-theme="light"] .btn-chat {
+  background: rgba(34, 197, 94, 0.08);
+}
+
+/* inputs in LIGHT mode */
+html[data-theme="light"] input,
+html[data-theme="light"] textarea {
+  background: #ffffff;
+  border-color: #d1d5db;
+  color: #020617;
+}
+
+html[data-theme="light"] input::placeholder,
+html[data-theme="light"] textarea::placeholder {
+  color: #9ca3af;
+}
+
+/* === Light-mode text colours === */
+html[data-theme="light"] h1,
+html[data-theme="light"] h2,
+html[data-theme="light"] h3,
+html[data-theme="light"] .account-id,
+html[data-theme="light"] .account-price {
+  color: var(--text-main);
+}
+
+html[data-theme="light"] p,
+html[data-theme="light"] li {
+  color: var(--text-main);
+}
+
+html[data-theme="light"] .hero-text,
+html[data-theme="light"] .section-subtitle,
+html[data-theme="light"] .hero-meta span,
+html[data-theme="light"] .hero-meta-row span,
+html[data-theme="light"] footer {
+  color: var(--text-muted);
+}
+
+/* override old inline #cbd5f5 colours in light mode */
+html[data-theme="light"] [style*="color:#cbd5f5"],
+html[data-theme="light"] [style*="color: #cbd5f5"] {
+  color: var(--text-muted) !important;
+}
+
+/* account body + details readable in light mode */
+html[data-theme="light"] .account-body,
+html[data-theme="light"] .acc-details {
+  color: var(--text-main);
+}
+/* ===== FIX NAV COLORS IN LIGHT THEME ===== */
+
+/* keep header dark but text light so it's readable */
+html[data-theme="light"] header {
+  background: rgba(2, 6, 23, 0.97);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.9);
+}
+
+/* logo + nav links become light in light mode */
+html[data-theme="light"] header .logo {
+  color: #e5e7eb;
+}
+
+html[data-theme="light"] header .logo span {
+  color: var(--accent); /* keep green accent */
+}
+
+html[data-theme="light"] header .nav-links a {
+  color: #e5e7eb;
+}
+
+html[data-theme="light"] header .nav-links a:hover {
+  color: #ffffff;
+}
+/* ===== IMAGE LIGHTBOX PREVIEW ===== */
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  display: none; /* shown via JS */
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 23, 42, 0.88);
+  z-index: 9999;
+  padding: 1.5rem;
+}
+
+.image-lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+}
+
+.image-lightbox-inner {
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-lightbox-inner img {
+  /* size limits */
+  max-width: 80vw;   /* at most 80% of window width */
+  max-height: 80vh;  /* at most 80% of window height */
+  object-fit: contain;
+
+  border-radius: 1rem;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+}
+@media (max-width: 600px) {
+  .image-lightbox-inner img {
+    max-width: 90vw;
+    max-height: 70vh;
+  }
+}
+
+.image-lightbox-close {
+  position: absolute;
+  top: -0.8rem;
+  right: -0.8rem;
+  border: none;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.9);
+  color: #e5e7eb;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image-lightbox-close:hover {
+  background: rgba(30, 64, 175, 0.95);
+}
+.account-card img {
+  cursor: zoom-in;
+}
+.account-card:hover img {
+  opacity: 0.9;
+  transition: 0.2s;
+}
+.img-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+  z-index: 9999;
+}
+
+.modal-img {
+  max-width: 95%;
+  max-height: 70vh;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 2.5rem;
+  color: white;
+  cursor: pointer;
+}
+
+.modal-details {
+  text-align: center;
+  color: white;
+  font-size: 1.1rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+}
+.img-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+  z-index: 9999;
+}
+
+.modal-img {
+  max-width: 95%;
+  max-height: 70vh;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 2.5rem;
+  color: white;
+  cursor: pointer;
+}
+
+.modal-price {
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 700;
+  background: rgba(0,0,0,0.4);
+  padding: 6px 16px;
+  border-radius: 8px;
+  margin-top: -6px;
+}
+.account-card img {
+  cursor: zoom-in;
+}
+.modal-buy-btn {
+  margin-top: 0.6rem;
+  padding: 0.55rem 1.4rem;
+  border-radius: 999px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: white;
+  box-shadow: 0 6px 28px rgba(0,0,0,0.4);
+  transition: transform 0.15s ease;
+}
+
+.modal-buy-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* SOLD ribbon */
+.account-card.sold {
+  position: relative;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.account-card.sold::after {
+  content: "SOLD";
+  position: absolute;
+  top: 12px;
+  left: -38px;
+  background: #dc2626;
+  color: #fff;
+  padding: 6px 60px;
+  font-weight: 700;
+  transform: rotate(-25deg);
+  font-size: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 5px 12px rgba(0,0,0,0.35);
+}
+/* hide sold accounts on main collection page */
+.account-card.sold {
+  display: none;
+}

@@ -794,6 +794,31 @@ html[data-theme="light"] header .nav-links a:hover {
 }
 
 /* SOLD ribbon */
+.sold {
+  position: relative;
+  opacity: 0.55;
+  pointer-events: none; /* user can't click */
+}
+
+.sold::after {
+  content: "SOLD";
+  position: absolute;
+  top: 10px;
+  left: -40px;
+  background: #dc2626;
+  color: #fff;
+  padding: 6px 60px;
+  font-weight: 700;
+  transform: rotate(-25deg);
+  font-size: 1.1rem;
+  border-radius: 8px;
+  box-shadow: 0 5px 12px rgba(0,0,0,0.4);
+}
+/* Show only SOLD accounts on sold.html */
+.sold-page .account-card:not(.sold) {
+  display: none !important;
+}
+/* SOLD ribbon */
 .account-card.sold {
   position: relative;
   opacity: 0.55;
@@ -813,8 +838,4 @@ html[data-theme="light"] header .nav-links a:hover {
   font-size: 1rem;
   border-radius: 8px;
   box-shadow: 0 5px 12px rgba(0,0,0,0.35);
-}
-/* hide sold accounts on main collection page */
-.account-card.sold {
-  display: none;
 }

@@ -8,23 +8,11 @@
 
   <!-- Layout override to make 2 columns per section on desktop -->
   <style>
-
-    /* Hide SOLD accounts only on collection page */
+/* Hide SOLD accounts only on collection page */
 .collection-page .sold {
   display: none !important;
 }
 
-    .accounts-grid {
-      margin-top: 1.4rem;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 columns */
-      gap: 1.2rem;
-    }
-    @media (max-width: 768px) {
-      .accounts-grid {
-        grid-template-columns: minmax(0, 1fr); /* 1 column on mobile */
-      }
-    }
   </style>
 </head>
 
@@ -76,7 +64,7 @@
 
       <div class="accounts-grid">
         <!-- BUDGET 1 -->
-        <article class="account-card account-card--screenshot sold sold">
+        <article class="account-card account-card--screenshot sold">
           <img src="bud-01.jpg" alt="Budget Free Fire account 1" />
           <div class="account-header">
             <div>

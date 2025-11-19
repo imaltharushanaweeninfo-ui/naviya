@@ -1,68 +1,861 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sold Accounts – NAVI ACCOUNT STORE</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NAVI ACCOUNT STORE - Collections</title>
+  <link rel="stylesheet" href="style.css" />
 
+  <!-- Layout override to make 2 columns per section on desktop -->
   <style>
-    .sold-grid {
-      margin-top: 2rem;
+
+    /* Hide SOLD accounts only on collection page */
+.collection-page .sold {
+  display: none !important;
+}
+
+    .accounts-grid {
+      margin-top: 1.4rem;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.6rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 columns */
+      gap: 1.2rem;
     }
-    .sold-ribbon {
-      position: absolute;
-      top: 15px;
-      right: -35px;
-      background: red;
-      color: white;
-      font-size: 0.85rem;
-      padding: 6px 45px;
-      transform: rotate(45deg);
-      font-weight: bold;
-      z-index: 5;
-    }
-    .sold-card {
-      opacity: 0.88;
+    @media (max-width: 768px) {
+      .accounts-grid {
+        grid-template-columns: minmax(0, 1fr); /* 1 column on mobile */
+      }
     }
   </style>
 </head>
 
-<body>
+  <body class="sold-page">
+
   <header>
     <nav class="nav">
       <div class="logo">NAVI <span>ACCOUNT</span> STORE</div>
+
       <div class="nav-links">
         <a href="index.html">Home</a>
-        <a href="collection.html">Collections</a>
-        <a href="sold.html" class="active">Sold</a>
+        <a href="collection.html" class="active">Collections</a>
+        <a href="sold.html">Sold</a>
+
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
       </div>
+
       <div class="nav-actions">
-        <button type="button" id="themeToggle" class="theme-toggle">☀ Light</button>
+        <button type="button" id="themeToggle" class="theme-toggle">
+          ☀ Light
+        </button>
         <a href="contact.html" class="btn-primary">Order now</a>
       </div>
     </nav>
   </header>
 
   <main>
-    <section class="hero-single">
-      <div class="hero-badge"><span></span> SOLD ACCOUNTS</div>
-      <h1 class="hero-title">Sold NAVI <span>Free Fire accounts</span>.</h1>
-      <p class="hero-text">These accounts are no longer available — shown only for record & trust.</p>
+    <!-- HERO -->
+  <section class="hero-single">
+  <div class="hero-badge">
+    <span></span> Sold Accounts
+  </div>
+  <h1 class="hero-title">Previously <span>sold Free Fire</span> accounts</h1>
+  <p class="hero-text">These accounts are no longer available.</p>
+</section>
+
+    <!-- ================= BUDGET SECTION ================= -->
+    <section class="section" id="budget">
+      <h2>Budget accounts</h2>
+      <p class="section-subtitle">
+        For players who want a good start without spending too much.
+      </p>
+
+      <div class="accounts-grid">
+        <!-- BUDGET 1 -->
+        <article class="account-card account-card--screenshot sold">
+          <img src="bud-01.jpg" alt="Budget Free Fire account 1" />
+          <div class="account-header">
+            <div>
+              <div class="account-id">BUD-NAVI-01 • Starter</div>
+              <div class="account-meta">Level 71 • Gold / Platinum</div>
+            </div>
+            <div class="badge">Budget</div>
+          </div>
+          <div class="account-body">
+            <ul class="acc-details">
+              <li>📓 Rapper</li>
+              <li>📓 Aug, Mp5, Ump, Ac80 Grand Prize</li>
+              <li>📓 5 Evo Gun</li>
+              <li>📓 1 Max Mp40 Lvl 6</li>
+              <li>📓 T-Shirt 477+</li>
+              <li>📓 Arctic blue BUNDLE</li>
+              <li>📓 COBRA BUNDLE</li>
+              <li>📓 NARUTO BUNDLES</li>
+              <li>ANY BIND ✅</li>
+            </ul>
+          </div>
+          <div class="account-tags">
+            <!--<span>.</span>
+            <span>.</span>
+            <span>.</span>--->
+          </div>
+          <div class="account-footer">
+            <div class="account-price">38,500/=</div>
+            <button class="btn-outline"
+              onclick="location.href='contact.html?acc=BUD-NAVI-01'">Chat to buy</button>
+          </div>
+        </article>
+
+        <!-- BUDGET 2 -->
+        <article class="account-card account-card--screenshot ">
+          <img src="bud-02.jpg" alt="Budget Free Fire account 2" />
+          <div class="account-header">
+            <div>
+              <div class="account-id">BUD-NAVI-02 • Rookie Plus</div>
+              <div class="account-meta">Level 68 • Diamond I</div>
+            </div>
+            <div class="badge">Budget</div>
+          </div>
+          <div class="account-body">
+            <ul class="acc-details">
+              <li>📓 6 Evo Gun</li>
+              <li>📓 2 Max with Fist</li>
+              <li>📓 Mac10 Grand Prize</li>
+              <li>📓 Bunny, Rampage, Football T Shirt</li>
+              <li>📓 Grand Prize Bundles</li>
+              <li>📓 Valut 358+</li>
+              <li>📓 M1014 2nd Prize</li>
+              <li>📓 M1887 Grand Prize and More Gun</li>
+              <li>🔥READY TO BIND✅</li>
+            </ul>
+          </div>
+          <div class="account-tags">
+           <!-- <span>Gun skins</span>
+            <span>2–3 bundles</span>
+            <span>EP x4</span>--->
+          </div>
+          <div class="account-footer">
+            <div class="account-price">24,500/=</div>
+            <button class="btn-outline"
+              onclick="location.href='contact.html?acc=BUD-NAVI-02'">Chat to buy</button>
+          </div>
+        </article>
+
+        <!-- BUDGET 3 -->
+        <article class="account-card account-card--screenshot">
+          <img src="bud-03.jpg" alt="Budget Free Fire account 3" />
+          <div class="account-header">
+            <div>
+              <div class="account-id">BUD-NAVI-03 • Skins Starter</div>
+              <div class="account-meta">Level 67 </div>
+            </div>
+            <div class="badge">Budget</div>
+          </div>
+          <div class="account-body">
+            <ul class="acc-details">
+              <li>📓 Cobra</li>
+              <li>📓 Naruto</li>
+              <li>📓 Valut 352+</li>
+              <li>📓 5 Evo Guns</li>
+              <li>📓 Xm8 , Poker Grand Prize</li>
+              <li>📓 Rapper ,One Punch</li>
+              <li>📓 Blue Yt</li>
+              <li>📓 Any Bind ✅</li>
+            </ul>
+          </div>
+          <div class="account-tags">
+            <span>Fashion items</span>
+            <span>Gun crates used</span>
+            <span>Stable stats</span>
+          </div>
+          <div class="account-footer">
+            <div class="account-price">26,500/=</div>
+            <button class="btn-outline"
+              onclick="location.href='contact.html?acc=BUD-NAVI-03'">Chat to buy</button>
+          </div>
+        </article>
+
+        <!-- BUDGET 4 -->
+        <article class="account-card account-card--screenshot">
+          <img src="bud-04.jpg" alt="Budget Free Fire account 4" />
+          <div class="account-header">
+            <div>
+              <div class="account-id">BUD-NAVI-04 • Rank Helper</div>
+              <div class="account-meta">Level 69</div>
+            </div>
+            <div class="badge">Budget</div>
+          </div>
+          <div class="account-body">
+            <ul class="acc-details">
+              <li>📓 Arctic blue</li>
+              <li>📓 Red,Blue Yt</li>
+              <li>📓 ️6 Evo Gun</li>
+              <li>📓 Ak Level 6</li>
+              <li>📓 Yellow Poker</li>
+              <li>📓 Sakura Ump</li>
+              <li>📓 One punch,winter land </li>
+              <li>📓 Any bind ✅ </li>
+              
+            </ul>
+          </div>
+        
+
+
+
+          <div class="account-footer">
+            <div class="account-price">29,000/=</div>
+            <button class="btn-outline"
+              onclick="location.href='contact.html?acc=BUD-NAVI-04'">Chat to buy</button>
+          </div>
+        </article>
+
+        <!-- BUDGET 5-->
+        <article class="account-card account-card--screenshot">
+          <img src="bud-05.jpg" alt="Budget Free Fire account 5" />
+          <div class="account-header">
+            <div>
+              <div class="account-id">BUD-NAVI-05 • Fashion Mix</div>
+              <div class="account-meta">Level 59 • Platinum / Diamond</div>
+            </div>
+            <div class="badge">Budget</div>
+          </div>
+          <div class="account-body">
+            <ul class="acc-details">
+              <li>📓 PRIME LEVAL 8 ‼</li>
+              <li>📓 3 EVO MAX 2 LEVAL 6</li>
+              <li>📓 S16 TO ELITE PASSES</li>
+              <li>📓 LEVAL 72+</li>
+              <li>📓 GOLDEN &amp; NAVY SHADE</li>
+              <li>📓 BLUE LOCK BUNDLE</li>
+              <li>📓 PARADOX BUNDLE</li>
+              <li>📓 JOCKER BUNDLES</li>
+              <li>🔥 AND MANY MORE SUPERB LUXURY GRAND PRIZE COLLECTION AVAILABLE MORE THAN COLLAGE – ANY BIND ✅</li>
+            </ul>
+          </div>
+          <div class="account-tags">
+            <span>Bundles</span>
+            <span>Emotes</span>
+            <span>Casual play</span>
+          </div>
+          <div class="account-footer">
+            <div class="account-price">19,500/=</div>
+            <button class="btn-outline"
+              onclick="location.href='contact.html?acc=BUD-NAVI-05'">Chat to buy</button>
+          </div>
+        </article> 
+
+        <!-- BUDGET 6 -->
+        <article class="account-card account-card--screenshot">
+          <img src="bud-06.jpg" alt="Budget Free Fire account 6" />
+          <div class="account-header">
+            <div>
+              <div class="account-id">BUD-NAVI-06 • Semi Pro</div>
+              <div class="account-meta">Level 61 • Diamond II</div>
+            </div>
+            <div class="badge">Budget</div>
+          </div>
+          <div class="account-body">
+            <ul class="acc-details">
+              <li>📓 PRIME LEVAL 8 ‼</li>
+              <li>📓 3 EVO MAX 2 LEVAL 6</li>
+              <li>📓 S16 TO ELITE PASSES</li>
+              <li>📓 LEVAL 72+</li>
+              <li>📓 GOLDEN &amp; NAVY SHADE</li>
+              <li>📓 BLUE LOCK BUNDLE</li>
+              <li>📓 PARADOX BUNDLE</li>
+              <li>📓 JOCKER BUNDLES</li>
+              <li>🔥 AND MANY MORE SUPERB LUXURY GRAND PRIZE COLLECTION AVAILABLE MORE THAN COLLAGE – ANY BIND ✅</li>
+            </ul>
+          </div>
+          <div class="account-tags">
+            <span>Higher KD</span>
+            <span>Gun skins</span>
+            <span>Rank ready</span>
+          </div>
+          <div class="account-footer">
+            <div class="account-price">23,000/=</div>
+            <button class="btn-outline"
+              onclick="location.href='contact.html?acc=BUD-NAVI-06'">Chat to buy</button>
+          </div>
+        </article>
+
+        <!-- BUDGET 7 -->
+        <article class="account-card account-card--screenshot">
+          <img src="bud-07.jpg" alt="Budget Free Fire account 7" />
+          <div class="account-header">
+            <div>
+              <div class="account-id">BUD-NAVI-07 • Utility ID</div>
+              <div class="account-meta">Level 56 • Platinum / Diamond</div>
+            </div>
+            <div class="badge">Budget</div>
+          </div>
+          <div class="account-body">
+            <ul class="acc-details">
+              <li>📓 PRIME LEVAL 8 ‼</li>
+              <li>📓 3 EVO MAX 2 LEVAL 6</li>
+              <li>📓 S16 TO ELITE PASSES</li>
+              <li>📓 LEVAL 72+</li>
+              <li>📓 GOLDEN &amp; NAVY SHADE</li>
+              <li>📓 BLUE LOCK BUNDLE</li>
+              <li>📓 PARADOX BUNDLE</li>
+              <li>📓 JOCKER BUNDLES</li>
+              <li>🔥 AND MANY MORE SUPERB LUXURY GRAND PRIZE COLLECTION AVAILABLE MORE THAN COLLAGE – ANY BIND ✅</li>
+            </ul>
+          </div>
+          <div class="account-tags">
+            <span>Utility items</span>
+            <span>Some EP</span>
+            <span>Backup ID</span>
+          </div>
+          <div class="account-footer">
+            <div class="account-price">17,000/=</div>
+            <button class="btn-outline"
+              onclick="location.href='contact.html?acc=BUD-NAVI-07'">Chat to buy</button>
+          </div>
+        </article>
+
+        <!-- BUDGET 8 -->
+        <article class="account-card account-card--screenshot">
+          <img src="bud-08.jpg" alt="Budget Free Fire account 8" />
+          <div class="account-header">
+            <div>
+              <div class="account-id">BUD-NAVI-08 • Budget Hero</div>
+              <div class="account-meta">Level 62 • Diamond III</div>
+            </div>
+            <div class="badge">Budget</div>
+          </div>
+          <div class="account-body">
+            <ul class="acc-details">
+              <li>📓 PRIME LEVAL 8 ‼</li>
+              <li>📓 3 EVO MAX 2 LEVAL 6</li>
+              <li>📓 S16 TO ELITE PASSES</li>
+              <li>📓 LEVAL 72+</li>
+              <li>📓 GOLDEN &amp; NAVY SHADE</li>
+              <li>📓 BLUE LOCK BUNDLE</li>
+              <li>📓 PARADOX BUNDLE</li>
+              <li>📓 JOCKER BUNDLES</li>
+              <li>🔥 AND MANY MORE SUPERB LUXURY GRAND PRIZE COLLECTION AVAILABLE MORE THAN COLLAGE – ANY BIND ✅</li>
+            </ul>
+          </div>
+          <div class="account-tags">
+            <span>Strong stats</span>
+            <span>Good bundles</span>
+            <span>EP x5</span>
+          </div>
+          <div class="account-footer">
+            <div class="account-price">25,000/=</div>
+            <button class="btn-outline"
+              onclick="location.href='contact.html?acc=BUD-NAVI-08'">Chat to buy</button>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <section class="section">
-      <h2>Sold accounts</h2>
-      <div id="soldContainer" class="sold-grid"></div>
-      <p id="soldError" style="color:#ff5a5a; margin-top:2rem; display:none;">
-        Error loading sold accounts.
+    <!-- ================= MID-RANGE SECTION ================= -->
+    <section class="section" id="mid">
+      <h2>Mid-range accounts</h2>
+      <p class="section-subtitle">
+        Better skins, more Elite Pass and good stats – for daily ranked grinders.
       </p>
+
+      <div class="accounts-grid">
+        <!-- MID 1 -->
+        <article class="account-card account-card--screenshot">
+          <img src="mid-01.jpg" alt="Mid range Free Fire account 1" />
+          <div class="account-header">
+            <div>
+              <div class="account-id">MID-NAVI-11 • Rank Grinder</div>
+              <div class="account-meta">•Level 76</div>
+            </div>
+            <div class="badge">Mid-range</div>
+          </div>
+          <div class="account-body">
+            <ul class="acc-details">
+              <li>🔥 S7 / S8 / S9 TO EP</li>
+              <li>🔥 BOOYH - SOMBIE SAMURAI - ONEPUNCH MAN BUNDLE </li>
+              <li>🔥 SCAR MAX AND GRANDPRICE GUNS </li>
+              <li>🔥 RAPPER UNDERWORD</li>
+              <li>🔥 THUG STREET - JOKER FACE MASK </li>
+              <li>🔥 LIKE 24336+ </li>
+              <li>🔥 READY TO BIND</li>
+            </ul>
+          </div>
+       
+
+
+          <div class="account-footer">
+            <div class="account-price">42,000/=</div>
+            <button class="btn-outline"
+              onclick="location.href='contact.html?acc=MID-NAVI-11'">Chat to buy</button>
+          </div>
+        </article>
+
+        <!-- MID 2 -->
+        <article class="account-card account-card--screenshot">
+          <img src="mid-02.jpg" alt="Mid range Free Fire account 2" />
+          <div class="account-header">
+            <div>
+              <div class="account-id">MID-NAVI-12 • Skin Lover</div>
+              <div class="account-meta">•Level 73 •</div>
+            </div>
+            <div class="badge">Mid-range</div>
+          </div>
+            <div class="account-body">
+            <ul class="acc-details">
+              <li>🔥 Prime Level 7</li>
+              <li>🔥 2 Evo Gun Max & Good Gun Skins </li>
+              <li>🔥 Golden shade, White Hair </li>
+              <li>🔥 Criminals , Doctor Bundle</li>
+              <li>🔥 Arctic Blue , Female / Male Good  Bundles</li>
+              <li>🔥 Like 25608+</li>
+              <li>🔥 510 👕 / 509</li>
+              <li>🔥 READY TO BIND</li>
+            </ul>
+          </div>
+       
+          <div class="account-tags">
+            <span>Fashion bundles</span>
+            <span>Exclusive emotes</span>
+            <span>Gun crates used</span>
+          </div>
+          <div class="account-footer">
+            <div class="account-price">38,000/=</div>
+            <button class="btn-outline"
+              onclick="location.href='contact.html?acc=MID-NAVI-12'">Chat to buy</button>
+          </div>
+        </article>
+
+        <!-- MID 3 -->
+        <article class="account-card account-card--screenshot">
+          <img src="mid-03.jpg" alt="Mid range Free Fire account 3" />
+          <div class="account-header">
+            <div>
+              <div class="account-id">MID-NAVI-13 • Balanced Pro</div>
+              <div class="account-meta">• Level 73</div>
+            </div>
+            <div class="badge">Mid-range</div>
+          </div>
+         <div class="account-body">
+            <ul class="acc-details">
+              <li>🔥 Arctic Red, Naruto, Booyah,White</li>
+              <li>🔥 Hair, Samurai, Cobra, Sudu Rawla </li>
+              <li>🔥 Foot Ball T Shirt </li>
+              <li>🔥 Valut 579+</li>
+              <li>🔥 7 Evo and 5 Max</li>
+              <li>🔥 XM8 , M1887 Yellow Poker Grand Prize</li>
+              <li>🔥 One punch, Rapper M1887</li>
+              <li>🔥 Any bind</li>
+            </ul>
+          </div>
+          
+
+          <div class="account-footer">
+            <div class="account-price">58,500/=</div>
+            <button class="btn-outline"
+              onclick="location.href='contact.html?acc=MID-NAVI-13'">Chat to buy</button>
+          </div>
+        </article>
+
+        <!-- MID 4 -->
+        <article class="account-card account-card--screenshot">
+          <img src="mid-04.jpg" alt="Mid range Free Fire account 4" />
+          <div class="account-header">
+            <div>
+              <div class="account-id">MID-NAVI-14 • Evo Ready</div>
+              <div class="account-meta">Level 67 • Diamond IV</div>
+            </div>
+            <div class="badge">Mid-range</div>
+          </div>
+          <div class="account-body">
+            Some Evo guns unlocked plus rare skins, good for upgrading later.
+          </div>
+          <div class="account-tags">
+            <span>Evo guns</span>
+            <span>Rare skins</span>
+            <span>Rank push</span>
+          </div>
+          <div class="account-footer">
+            <div class="account-price">42,000/=</div>
+            <button class="btn-outline"
+              onclick="location.href='contact.html?acc=MID-NAVI-14'">Chat to buy</button>
+          </div>
+        </article>
+
+        <!-- MID 5 -->
+        <article class="account-card account-card--screenshot">
+          <img src="mid-05.jpg" alt="Mid range Free Fire account 5" />
+          <div class="account-header">
+            <div>
+              <div class="account-id">MID-NAVI-15 • EP Collector</div>
+              <div class="account-meta">Level 64 • Diamond IV</div>
+            </div>
+            <div class="badge">Mid-range</div>
+          </div>
+          <div class="account-body">
+            Many Elite Pass items and themed sets – good for long-time collectors.
+          </div>
+          <div class="account-tags">
+            <span>EP x10+</span>
+            <span>Set collections</span>
+            <span>Emotes</span>
+          </div>
+          <div class="account-footer">
+            <div class="account-price">43,500/=</div>
+            <button class="btn-outline"
+              onclick="location.href='contact.html?acc=MID-NAVI-15'">Chat to buy</button>
+          </div>
+        </article> 
+
+        <!-- MID 6 -->
+        <article class="account-card account-card--screenshot">
+          <img src="mid-06.jpg" alt="Mid range Free Fire account 6" />
+          <div class="account-header">
+            <div>
+              <div class="account-id">MID-NAVI-16 • KD Focus</div>
+              <div class="account-meta">Level 68 • Diamond IV</div>
+            </div>
+            <div class="badge">Mid-range</div>
+          </div>
+          <div class="account-body">
+            Strong K/D and gameplay focus, fewer fashion items.
+          </div>
+          <div class="account-tags">
+            <span>High KD</span>
+            <span>Meta loadout</span>
+            <span>Ranked main</span>
+          </div>
+          <div class="account-footer">
+            <div class="account-price">44,000/=</div>
+            <button class="btn-outline"
+              onclick="location.href='contact.html?acc=MID-NAVI-16'">Chat to buy</button>
+          </div>
+        </article>
+
+        <!-- MID 7 -->
+        <article class="account-card account-card--screenshot">
+          <img src="mid-07.jpg" alt="Mid range Free Fire account 7" />
+          <div class="account-header">
+            <div>
+              <div class="account-id">MID-NAVI-17 • Flex &amp; Rank</div>
+              <div class="account-meta">Level 67 • Diamond IV</div>
+            </div>
+            <div class="badge">Mid-range</div>
+          </div>
+          <div class="account-body">
+            Good mix of fashion bundles and performance skins.
+          </div>
+          <div class="account-tags">
+            <span>Bundles</span>
+            <span>Legendary guns</span>
+            <span>Rank ready</span>
+          </div>
+          <div class="account-footer">
+            <div class="account-price">45,000/=</div>
+            <button class="btn-outline"
+              onclick="location.href='contact.html?acc=MID-NAVI-17'">Chat to buy</button>
+          </div>
+        </article>
+
+        <!-- MID 8 -->
+        <article class="account-card account-card--screenshot">
+          <img src="mid-08.jpg" alt="Mid range Free Fire account 8" />
+          <div class="account-header">
+            <div>
+              <div class="account-id">MID-NAVI-18 • Mid King</div>
+              <div class="account-meta">Level 69 • Diamond IV</div>
+            </div>
+            <div class="badge">Mid-range</div>
+          </div>
+          <div class="account-body">
+            Top of the mid-range list, very strong package for serious players.
+          </div>
+          <div class="account-tags">
+            <span>High stats</span>
+            <span>Many skins</span>
+            <span>EP x12</span>
+          </div>
+          <div class="account-footer">
+            <div class="account-price">48,000/=</div>
+            <button class="btn-outline"
+              onclick="location.href='contact.html?acc=MID-NAVI-18'">Chat to buy</button>
+          </div>
+        </article>
+      </div>
     </section>
+
+    <!-- ================= PREMIUM SECTION ================= -->
+    <section class="section" id="premium">
+      <h2>Premium &amp; high price accounts</h2>
+      <p class="section-subtitle">
+        High-end IDs with rare bundles, old Elite Pass items and strong rank history.
+      </p>
+
+      <div class="accounts-grid">
+        <!-- PREMIUM 1: Prime Level 8 account (your real one) -->
+        <article class="account-card account-card--screenshot">
+          <img src="pre-01.jpg"
+               alt="Prime Level 8 Free Fire account with luxury bundles" />
+          <div class="account-header">
+            <div>
+              <div class="account-id">PRE-NAVI-ELITE8 • Prime Lvl 8</div>
+              <div class="account-meta">Level 72+ • Prime Level 8</div>
+            </div>
+            <div class="badge">Premium</div>
+          </div>
+          <div class="account-body">
+            <ul class="acc-details" style="color:var(--text-muted);">
+              <li>⭐  PRIME LEVEL 8 ‼</li>
+              <li>📓 3 EVO MAX, 2 LEVEL 6</li>
+              <li>📓 S16 TO ELITE PASSES</li>
+              <li>📓 GOLDEN &amp; NAVY SHADE</li>
+              <li>📓 BLUE LOCK BUNDLE</li>
+              <li>📓 PARADOX BUNDLE</li>
+              <li>📓 JOCKER BUNDLES</li>
+              <li>🔥 MANY MORE LUXURY GRAND PRIZE COLLECTION – ANY BIND ✅</li>
+            </ul>
+          </div>
+          <div class="account-tags">
+            <span>Prime Lvl 8</span>
+            <span>3 Evo Max</span>
+            <span>Luxury bundles</span>
+          </div>
+          <div class="account-footer">
+            <div class="account-price">
+              53,000/= <span style="font-size:0.7rem;font-weight:400;">(last with service charge ✅)</span>
+            </div>
+            <button class="btn-outline"
+              onclick="location.href='contact.html?acc=PRE-NAVI-ELITE8'">Chat to buy</button>
+          </div>
+        </article>
+
+        <!-- PREMIUM 2 -->
+        <article class="account-card account-card--screenshot">
+          <img src="pre-02.jpg" alt="Premium Free Fire account 2" />
+          <div class="account-header">
+            <div>
+              <div class="account-id">PRE-NAVI-21 • Rare Collector</div>
+              <div class="account-meta">• Level 84 </div>
+            </div>
+            <div class="badge">Premium</div>
+          </div>
+         <div class="account-body">
+            <ul class="acc-details" style="color:var(--text-muted);">
+              <li>⭐ Sakura , season 3 , 5, 7 , 8 ,9 ,10 ,11 more elites</li>
+              <li>⭐ Ragnarock , golden shade ,tatta bundle,  arctic red , bunny</li>
+              <li>⭐ iron blead , white hair, blue & green Yt  and so rare bundles </li>
+              <li>⭐ 14 evo gun , 5 max , xm 8 , unp , Aug , mp40 , m10 and more top 1 grand prize gun</li>
+              <li>⭐ rapper topical and new shot guns</li>
+              <li>⭐ Season 1 rank and more heroic avatar banner jercy</li>
+              <li>⭐ red free oder wall</li>
+              <li>⭐ jelly pet</li>
+            </ul>
+          </div>
+        
+
+
+          <div class="account-footer">
+            <div class="account-price">260,000/=</div>
+            <button class="btn-outline"
+              onclick="location.href='contact.html?acc=PRE-NAVI-21'">Chat to buy</button>
+          </div>
+        </article>
+
+        <!-- PREMIUM 3 -->
+        <article class="account-card account-card--screenshot">
+          <img src="pre-03.jpg" alt="Premium Free Fire account 3" />
+          <div class="account-header">
+            <div>
+              <div class="account-id">PRE-NAVI-22 • Max Pusher</div>
+              <div class="account-meta">Level 82 </div>
+            </div>
+            <div class="badge">Premium</div>
+          </div>
+        <div class="account-body">
+            <ul class="acc-details" style="color:var(--text-muted);">
+              <li>⭐ S13 To Ep</li>
+              <li>⭐ New Bunny, Red Bunny</li>
+              <li>⭐ New Golden Shade </li>
+              <li>⭐ Blue Clock Rampage, Rabbid</li>
+              <li>⭐ Valut 691+</li>
+              <li>⭐ 7 Evo Guns</li>
+              <li>⭐ 3 Max Parepal Lvl 6</li>
+              <li>⭐ Aug , Ac80, Grand Prize Rapper and Trogan Faded Wheel</li>
+      
+              <li>⭐ Reday To Bind ✅</li>
+            </ul>
+          </div>
+       
+
+
+          <div class="account-footer">
+            <div class="account-price">68,500/=</div>
+            <button class="btn-outline"
+              onclick="location.href='contact.html?acc=PRE-NAVI-22'">Chat to buy</button>
+          </div>
+        </article>
+
+        <!-- PREMIUM 4 -->
+        <article class="account-card account-card--screenshot">
+          <img src="pre-04.jpg" alt="Premium Free Fire account 4" />
+          <div class="account-header">
+            <div>
+              <div class="account-id">PRE-NAVI-23 • Evo Master</div>
+              <div class="account-meta">Level 78 </div>
+            </div>
+            <div class="badge">Premium</div>
+          </div>
+           <div class="account-body">
+            <ul class="acc-details" style="color:var(--text-muted);">
+              <li>⭐ Panther To Ep</li>
+              <li>⭐ Golden Shade</li>
+              <li>⭐ Foot Ball T shirt </li>
+              <li>⭐ Bunny, Lokesh Bundle</li>
+              <li>⭐ Arctic Blue , Rampage</li>
+              <li>⭐ White Hair, Girl Golden Shade</li>
+              <li>⭐ Valut 700+</li>
+              <li>⭐ 10 Evo Guns , 4 Max</li>
+              <li>⭐ Xm8, An94, M1014, Woodpacker Grand prize and Rapper</li>
+              <li>⭐ White Yt , Puma, Street Thug</li>
+              <li>⭐ Reday To Bind ✅</li>
+            </ul>
+          </div>
+      
+
+
+          <div class="account-footer">
+            <div class="account-price">68,500/=</div>
+            <button class="btn-outline"
+              onclick="location.href='contact.html?acc=PRE-NAVI-23'">Chat to buy</button>
+          </div>
+        </article>
+
+        <!-- PREMIUM 5 -->
+        <article class="account-card account-card--screenshot">
+          <img src="pre-05.jpg" alt="Premium Free Fire account 5" />
+          <div class="account-header">
+            <div>
+              <div class="account-id">PRE-NAVI-24 • Emote King</div>
+              <div class="account-meta">Level 72 </div>
+            </div>
+            <div class="badge">Premium</div>
+          </div>
+           <div class="account-body">
+            <ul class="acc-details" style="color:var(--text-muted);">
+              <li>⭐ S7 To Ep</li>
+              <li>⭐ Rampage,Naruto,Bunny</li>
+              <li>⭐ Foot Ball T shirt </li>
+              <li>⭐ White /black Jersy</li>
+              <li>⭐ Sudu Rawla</li>
+              <li>⭐ Valut 479+</li>
+              <li>⭐ ️6 Evo Guns and 4 Max</li>
+              <li>⭐ Scar Grand Prize, Sakura Ump</li>
+              <li>⭐ One Punch with Tropical M1887</li>
+              <li>⭐ Any Bind ✅</li>
+            </ul>
+          </div>
+      
+          <div class="account-tags">
+            <span>Emote collector</span>
+            <span>Event rare</span>
+            <span>Fashion flex</span>
+          </div>
+          <div class="account-footer">
+            <div class="account-price">68,500/=</div>
+            <button class="btn-outline"
+              onclick="location.href='contact.html?acc=PRE-NAVI-24'">Chat to buy</button>
+          </div>
+        </article>
+
+        <!-- PREMIUM 6 -->
+        <article class="account-card account-card--screenshot">
+          <img src="pre-06.jpg" alt="Premium Free Fire account 6" />
+          <div class="account-header">
+            <div>
+              <div class="account-id">PRE-NAVI-25 • EP Legend</div>
+              <div class="account-meta">Level 74 • Heroic</div>
+            </div>
+            <div class="badge">Premium</div>
+          </div>
+          <div class="account-body">
+            Very high Elite Pass history with many complete seasonal sets.
+          </div>
+          <div class="account-tags">
+            <span>EP x20+</span>
+            <span>Season sets</span>
+            <span>Old items</span>
+          </div>
+          <div class="account-footer">
+            <div class="account-price">68,000/=</div>
+            <button class="btn-outline"
+              onclick="location.href='contact.html?acc=PRE-NAVI-25'">Chat to buy</button>
+          </div>
+        </article>
+
+        <!-- PREMIUM 7 -->
+        <article class="account-card account-card--screenshot">
+          <img src="pre-07.jpg" alt="Premium Free Fire account 7" />
+          <div class="account-header">
+            <div>
+              <div class="account-id">PRE-NAVI-26 • Mythic Mix</div>
+              <div class="account-meta">Level 73 • Heroic</div>
+            </div>
+            <div class="badge">Premium</div>
+          </div>
+          <div class="account-body">
+            Combination of mythic bundles, gun skins and rare headgear.
+          </div>
+          <div class="account-tags">
+            <span>Mythic sets</span>
+            <span>Legendary guns</span>
+            <span>Rare headgear</span>
+          </div>
+          <div class="account-footer">
+            <div class="account-price">72,000/=</div>
+            <button class="btn-outline"
+              onclick="location.href='contact.html?acc=PRE-NAVI-26'">Chat to buy</button>
+          </div>
+        </article>
+
+        <!-- PREMIUM 8 -->
+        <article class="account-card account-card--screenshot">
+          <img src="pre-08.jpg" alt="Premium Free Fire account 8" />
+          <div class="account-header">
+            <div>
+              <div class="account-id">PRE-NAVI-27 • Ultimate NAVI</div>
+              <div class="account-meta">Level 76 • Heroic+</div>
+            </div>
+            <div class="badge">Premium</div>
+          </div>
+          <div class="account-body">
+            Top-tier NAVI package with everything maxed – best for serious buyers.
+          </div>
+          <div class="account-tags">
+            <span>Maxed skins</span>
+            <span>Top KD</span>
+            <span>Tournament ready</span>
+          </div>
+          <div class="account-footer">
+            <div class="account-price">80,000/=</div>
+            <button class="btn-outline"
+              onclick="location.href='contact.html?acc=PRE-NAVI-27'">Chat to buy</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+<!-- Image Preview Modal 
+<div id="imgPreviewModal" class="img-modal">
+  <span class="close-btn">&times;</span>
+  <img class="modal-img" id="previewImg" />
+  <p id="previewPrice" class="modal-price"></p>
+</div>--->
+<!-- Image Preview Modal -->
+<div id="imgPreviewModal" class="img-modal">
+  <span class="close-btn">&times;</span>
+  <img class="modal-img" id="previewImg" />
+  <p id="previewPrice" class="modal-price"></p>
+  <button id="previewBtn" class="modal-buy-btn">Chat to Buy</button>
+</div>
+
   </main>
 
   <footer>
@@ -70,58 +863,66 @@
   </footer>
 
   <script>
+    // footer year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // fetch sold items from collection page
-    fetch("collection.html")
-      .then(res => res.text())
-      .then(html => {
-        const doc = new DOMParser().parseFromString(html, "text/html");
-        const soldCards = doc.querySelectorAll(".account-card.sold");
-        const container = document.getElementById("soldContainer");
-
-        if (soldCards.length === 0) {
-          container.innerHTML = "<p style='margin-top:1rem;'>No sold accounts yet.</p>";
-          return;
-        }
-
-        soldCards.forEach(card => {
-          let clone = card.cloneNode(true);
-          clone.classList.add("sold-card");
-
-          // add sold ribbon if missing
-          if (!clone.querySelector(".sold-ribbon")) {
-            const ribbon = document.createElement("div");
-            ribbon.className = "sold-ribbon";
-            ribbon.textContent = "SOLD";
-            clone.appendChild(ribbon);
-          }
-
-          // disable buy button
-          const btn = clone.querySelector("button");
-          if (btn) btn.remove();
-
-          container.appendChild(clone);
-        });
-      })
-      .catch(() => {
-        document.getElementById("soldError").style.display = "block";
-      });
-
-    // theme toggle
+    // theme toggle (same as other pages)
     (function () {
       const root = document.documentElement;
       const btn = document.getElementById("themeToggle");
-      const saved = localStorage.getItem("navi-theme") || "dark";
-      root.setAttribute("data-theme", saved);
-      btn.textContent = saved === "light" ? "🌙 Dark" : "☀ Light";
-      btn.onclick = () => {
+
+      function applyTheme(theme) {
+        const t = theme === "light" ? "light" : "dark";
+        root.setAttribute("data-theme", t);
+        btn.textContent = t === "light" ? "🌙 Dark" : "☀ Light";
+      }
+
+      const saved = localStorage.getItem("navi-theme");
+      applyTheme(saved || "dark");
+
+      btn.addEventListener("click", () => {
         const next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
-        root.setAttribute("data-theme", next);
-        btn.textContent = next === "light" ? "🌙 Dark" : "☀ Light";
+        applyTheme(next);
         localStorage.setItem("navi-theme", next);
-      };
+      });
     })();
+
+
+
+
+
+
+
+
+
+  const whatsappNumber = "94775698175"; // your WhatsApp number without +
+
+  document.querySelectorAll(".account-card").forEach(card => {
+    const img = card.querySelector("img");
+    const price = card.querySelector(".account-price").textContent;
+    const accId = card.querySelector(".account-id").textContent.split("•")[0].trim(); // get ID only
+
+    img.addEventListener("click", () => {
+      document.getElementById("imgPreviewModal").style.display = "flex";
+      document.getElementById("previewImg").src = img.src;
+      document.getElementById("previewPrice").textContent = price;
+
+      const msg = `Hello, I'm interested in buying this account:\nAccount ID: ${accId}\nPrice: ${price}`;
+      document.getElementById("previewBtn").onclick = () => {
+        window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`, "_blank");
+      };
+    });
+  });
+
+  document.querySelector(".close-btn").addEventListener("click", () => {
+    document.getElementById("imgPreviewModal").style.display = "none";
+  });
+
+  window.addEventListener("click", (e) => {
+    if (e.target.id === "imgPreviewModal") {
+      document.getElementById("imgPreviewModal").style.display = "none";
+    }
+  });
   </script>
 </body>
 </html>
